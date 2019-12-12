@@ -1,0 +1,7 @@
+item['id','name','price','expiration_date','quantity','image','discount(null)',] // industry_date
+delivery['id','name','salary','number_of_deliveries']
+inventory['id','name','description'] // more fields
+items_inventory['item_id','inventory_id','quantity']
+order['id','user_id','delivery_id(null)','total_price','address']
+items_order['item_id','order_id']
+report['id','description']
