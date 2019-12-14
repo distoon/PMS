@@ -9,4 +9,5 @@ class ItemOrder extends Model
     protected $fillable = [
       'item_id','order_id',
     ];
+    protected $table = 'items_orders';
 }

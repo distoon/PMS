@@ -3,6 +3,7 @@
 @section('adminlte_css')
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
   {{-- <link rel="stylesheet" href="node_modules/sweetalert/dist/sweetalert.css"> --}}
 
     @stack('css')
@@ -210,8 +211,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
     <script>$(".datatable").DataTable();</script>
     <script>$( ".datepicker" ).datepicker({format: 'yyyy-mm-dd',});</script>
+    <script>$('.select2').select2()</script>
     <script>
     $(document).on('click', '.delete',function(e){
       {{-- you have to add class="delete{{object->id}}" and delete="delete={{object->id}}" to your form and add class ="delete" to the submit butoon--}}

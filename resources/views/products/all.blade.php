@@ -20,7 +20,7 @@
           <td>{{ $product->price }}</td>
           <td>{{ $product->quantity }}</td>
           <td>{{ $product->expiration_date }}</td>
-          <td>{{ ($product->discount)?? 'No Discount'}}</td>
+          <td>{{ ($product->discount || $product->discount!=0)? $product->discount."%" : 'No Discount'}}</td>
           <td>
             <form action="{!! route('product.delete') !!}" method="post" delete="delete{{$product->id}}" class="delete{{$product->id}}">
               @csrf

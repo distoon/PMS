@@ -10,16 +10,25 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/','HomeController@index');
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/product/create','ProductController\ProductController@create')->name('product.create');
-Route::post('/product/store','ProductController\ProductController@store')->name('product.store');
-Route::get('/product/all','ProductController\ProductController@index')->name('product.all');
-Route::get('/product/show/{id}','ProductController\ProductController@show')->name('product.show');
-Route::get('/product/edit/{id}','ProductController\ProductController@edit')->name('product.edit');
-Route::post('/product/update/{id}','ProductController\ProductController@update')->name('product.update');
-Route::post('/product/delete','ProductController\ProductController@destroy')->name('product.delete');
+Route::group(['middleware'=>'auth'],function(){
+  Route::get('/clear-cache', function() {
+      Artisan::call('cache:clear');
+      return "Cache is cleared";
+  });
+  Route::get('/','HomeController@index');
+  Route::get('/home', 'HomeController@index')->name('home');
+  Route::group(['middleware'=>'admin'],function(){
+    Route::get('/product/create','ProductController\ProductController@create')->name('product.create');
+    Route::post('/product/store','ProductController\ProductController@store')->name('product.store');
+    Route::get('/product/all','ProductController\ProductController@index')->name('product.all');
+    Route::get('/product/show/{id}','ProductController\ProductController@show')->name('product.show');
+    Route::get('/product/edit/{id}','ProductController\ProductController@edit')->name('product.edit');
+    Route::post('/product/update/{id}','ProductController\ProductController@update')->name('product.update');
+    Route::post('/product/delete','ProductController\ProductController@destroy')->name('product.delete');
+    Route::get('/order/all','OrderController\OrderController@index')->name('order.all');
+  });
+  Route::get('/order/create','OrderController\OrderController@create')->name('order.create');
+  Route::post('/order/store','OrderController\OrderController@store')->name('order.store');
+  Route::get('/order/myOrders','OrderController\OrderController@myOrders')->name('order.myOrders');
+});

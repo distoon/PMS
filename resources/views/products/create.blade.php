@@ -28,7 +28,7 @@
         <input type="number" name="discount" class="form-control" value="{{old('discount')}}">
       </div>
       <div class="form-group">
-        <label>Imgae</label>
+        <label>Image</label>
         <input type="file" name="image" value="{{old('image')}}">
       </div>
       <div class="form-group">
