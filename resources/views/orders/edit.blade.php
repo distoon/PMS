@@ -10,7 +10,7 @@
       <select class="form-control select2" id="item_picker">
         <option disabled selected>Select Item</option>
         @foreach ($products as $product)
-          <option value="{{ $product->id }}" price="{{ $product->price }}" quantity="{{ $product->quantity }}" image="{{ $product->image }}">{{ $product->name }}</option>
+          <option value="{{ $product->item->id }}" price="{{ $product->item->price }}" quantity="{{ $product->item->quantity }}" image="{{ $product->item->image }}">{{ $product->item->name }}</option>
         @endforeach
       </select>
     </div>
@@ -24,6 +24,17 @@
           <th>Remove</th>
         </thead>
         <tbody id="items_container">
+          @foreach ($products as $product)
+            <tr id="row{{$product->item->id}}">
+              <td>{{ $product->item->name }}</td>
+              <td>{{ $product->item->price }}</td>
+              <td><input type="number" name="quantity[]" value="{{ $product->quantity }}" class="col-md-6" min="1"></td>
+              <td><img src="{{ $product->item->image }}" alt="Product Image" height="100" width="100"></td>
+              <td><input type="hidden" name="id[]" value="{{ $product->item->id }}" min="1"></td>
+              <td><input type="hidden" name="price[]" value="{{ $product->item->price }}"></td>
+              <td><button type="button" class="btn btn-danger btn-sm" id="remove{{ $product->id }}">X</button></td>
+            </tr>
+          @endforeach
         </tbody>
       </table>
     </div>

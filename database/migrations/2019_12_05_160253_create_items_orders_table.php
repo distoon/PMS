@@ -17,6 +17,7 @@ class CreateItemsOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('item_id');
             $table->integer('order_id');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

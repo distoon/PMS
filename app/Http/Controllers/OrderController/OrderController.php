@@ -41,9 +41,10 @@ class OrderController extends Controller
       ItemOrder::create([
         'item_id' => $value,
         'order_id' => $order->id,
+        'quantity' => $quantities[$key],
       ]);
     }
-    if(\Auth::user()->role()){
+    if(\Auth::user()->role){
       return redirect()->route('order.myOrders');
     }
     return redirect()->route('order.all');
@@ -57,5 +58,21 @@ class OrderController extends Controller
   {
     $orders = Order::all();
     return view('orders.all',compact('orders'));
+  }
+  public function edit($id)
+  {
+    $order = Order::find($id);
+    $products = ItemOrder::where('order_id',$id)->get();
+    $deliveries = Delivery::all();
+    return view('orders.edit',compact('order','products','deliveries'));
+  }
+  public function update(Request $request)
+  {
+
+    return $request;
+  }
+  public function report()
+  {
+    return view('orders.report');
   }
 }

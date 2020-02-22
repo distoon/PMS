@@ -28,7 +28,13 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('/product/delete','ProductController\ProductController@destroy')->name('product.delete');
     Route::get('/order/all','OrderController\OrderController@index')->name('order.all');
   });
+  Route::get('/order/edit/{id}','OrderController\OrderController@edit')->name('order.edit');
+  Route::post('/order/upudate/{id}','OrderController\OrderController@update')->name('order.update');
+  Route::get('/order/show/{id}','OrderController\OrderController@show')->name('order.show');
+  Route::get('/order/state/{id}','OrderController\OrderController@state')->name('order.state');
+  Route::post('/order/delete','OrderController\OrderController@destroy')->name('order.delete');
   Route::get('/order/create','OrderController\OrderController@create')->name('order.create');
   Route::post('/order/store','OrderController\OrderController@store')->name('order.store');
   Route::get('/order/myOrders','OrderController\OrderController@myOrders')->name('order.myOrders');
+  Route::get('/order/report','OrderController\OrderController@report')->name('order.report');
 });

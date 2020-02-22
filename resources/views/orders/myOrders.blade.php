@@ -10,7 +10,7 @@
       <th>Total Price</th>
       <th>Address</th>
       <th>Created At</th>
-      <th>Actions</th>
+      {{-- <th>Actions</th> --}}
     </thead>
     @foreach ($orders as $index => $order)
       <tr>
@@ -19,10 +19,11 @@
         <td>{{ $order->address }}</td>
         <td>{{ $order->created_at }}</td>
         <td>
-          <form  action="" method="post">
-            <a href="#" class="btn btn-primary btn-sm">Edit</a>
-            <a href="#" class="btn btn-success btn-sm">Show</a>
-            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+          <form  action="{!! route('order.delete') !!}" method="post">
+            {{-- <a href="{!! route('order.edit',$order->id) !!}" class="btn btn-primary btn-sm">Edit</a> --}}
+            {{-- <a href="{!! route('order.show',$order->id) !!}" class="btn btn-success btn-sm">Show</a> --}}
+            {{-- <input type="hidden" name="id" value="{{ $order->id }}"> --}}
+            {{-- <button type="button" class="btn btn-danger btn-sm">Delete</button> --}}
           </form>
         </td>
       </tr>

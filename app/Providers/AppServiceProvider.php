@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         );
         if(\Auth::check()){
           if(\Auth::user()->role == 0){
-            $event->menu->add('Admin');
+            $event->menu->add('Phamacist');
             $event->menu->add(
               [
                 'text' => 'Add Products',
@@ -48,6 +48,10 @@ class AppServiceProvider extends ServiceProvider
               [
                 'text' => 'All Orders',
                 'url' => route('order.all'),
+              ],
+              [
+                'text' => 'Report',
+                'url' => route('order.report'),
               ],
 
             );
